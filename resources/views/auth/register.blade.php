@@ -1,60 +1,63 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+<x-auth-layout>
+    <div class="text-center mb-4">
+        <a href="." class="navbar-brand navbar-brand-autodark"><img src="./static/logo.svg" height="36" alt=""></a>
+    </div>
 
-        <x-jet-validation-errors class="mb-4" />
-
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
-
-            <div>
-                <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
-            </div>
-
-            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                <div class="mt-4">
-                    <x-jet-label for="terms">
-                        <div class="flex items-center">
-                            <x-jet-checkbox name="terms" id="terms" required />
-
-                            <div class="ml-2">
-                                {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
-                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',
-                                ]) !!}
-                            </div>
-                        </div>
-                    </x-jet-label>
+    <form class="card card-md" action="{{route('register')}}" method="post" autocomplete="off" novalidate>
+        @csrf
+        <div class="card-body">
+            <h2 class="card-title text-center mb-4">Create new account</h2>
+            @if($errors->any())
+                <div class="p-3 rounded my-2 bg-danger-lt">
+                    <ul class="list-unstyled mb-0">
+                        @foreach($errors->all() as $error)
+                            <li>{{$error}}</li>
+                        @endforeach
+                    </ul>
                 </div>
             @endif
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-jet-button class="ml-4">
-                    {{ __('Register') }}
-                </x-jet-button>
+            <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input name="name" type="text" class="form-control" value="{{old('name')}}" placeholder="Enter name">
             </div>
-        </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
+            <div class="mb-3">
+                <label class="form-label">Email address</label>
+                <input name="email" type="email" class="form-control" value="{{old('email')}}" placeholder="Enter email">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <div class="input-group input-group-flat">
+                    <input name="password" type="password" class="form-control" value="{{old('password')}}"  placeholder="Password"  autocomplete="off">
+                    <span class="input-group-text">
+                  <a href="#" class="link-secondary" title="Show password" data-bs-toggle="tooltip"><!-- Download SVG icon from http://tabler-icons.io/i/eye -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="2" /><path d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7" /></svg>
+                  </a>
+                </span>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Password Confirmation</label>
+                <div class="input-group input-group-flat">
+                    <input name="password_confirmation" type="password" value="{{old('password')}}" class="form-control"  placeholder="Type password again "  autocomplete="off">
+                    <span class="input-group-text">
+                  <a href="#" class="link-secondary" title="Show password" data-bs-toggle="tooltip"><!-- Download SVG icon from http://tabler-icons.io/i/eye -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="2" /><path d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7" /></svg>
+                  </a>
+                </span>
+                </div>
+            </div>
+           {{-- <div class="mb-3">
+                <label class="form-check">
+                    <input type="checkbox" class="form-check-input"/>
+                    <span class="form-check-label">Agree the <a href="./terms-of-service.html" tabindex="-1">terms and policy</a>.</span>
+                </label>
+            </div>--}}
+            <div class="form-footer">
+                <button type="submit" class="btn btn-primary w-100">Create new account</button>
+            </div>
+        </div>
+    </form>
+    <div class="text-center text-muted mt-3">
+        Already have account? <a href="{{route('login')}}" tabindex="-1">Sign in</a>
+    </div>
+</x-auth-layout>

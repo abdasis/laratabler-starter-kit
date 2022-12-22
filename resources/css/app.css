@@ -1,3 +1,43 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url("https://rsms.me/inter/inter.css");
+:root {
+    --tblr-font-sans-serif: Inter, -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+}
+
+.nav-link-title{
+    font-weight: 400;
+    font-size: 15px;
+
+}
+
+.nav-item a{
+    padding: 7px 12px;
+    border-radius: 10px;
+}
+
+
+.nav-item a:hover{
+    background: #EBEFFD;
+    padding: 7px 12px;
+    border-radius: 10px;
+    color: #2C5BFC !important;
+}
+
+.nav-link-icon i{
+    font-size: 18px !important;
+    color: #6671A8;
+}
+
+a.nav-link.active {
+    margin: 0px 10px;
+}
+
+a.nav-link {
+    margin: 0px 10px;
+    color: #6671A8 !important;
+}
+
+.nav-vertical .nav {
+    margin-left: 25px !important;
+    border-left: var(--tblr-border-width) var(--tblr-border-style) var(--tblr-border-color);
+    padding-left: 0px !important;
+}
