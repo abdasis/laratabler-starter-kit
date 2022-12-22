@@ -8,14 +8,14 @@
         </h1>
         <div class="collapse navbar-collapse px-2 mt-3" data-simplebar style="max-height: 90vh" id="sidebar-menu">
             <ul class="nav nav-pills nav-vertical">
-                <x-nav-item target="null" title="Dashboard">
+                <x-nav-item dropdownable="false" target="{{route('dashboard')}}" title="Dashboard">
                     <x-nav-icon>
                         <i class="ri-dashboard-2-line fs-2"></i>
                     </x-nav-icon>
                 </x-nav-item>
 
                 {{--menu siswa--}}
-                <x-nav-item target="menu-siswa" title="Siswa">
+                <x-nav-item dropdownable="true" target="menu-siswa" title="Siswa">
                     <x-nav-icon>
                         <i class="ri-contacts-book-line fs-2"></i>
                     </x-nav-icon>
@@ -27,7 +27,7 @@
                 {{--end menu siswa--}}
 
                 {{--start menu management sekolah--}}
-                <x-nav-item target="management-sekolah" title="Data Sekolah">
+                <x-nav-item dropdownable="true" target="management-sekolah" title="Data Sekolah">
                     <x-nav-icon>
                         <i class="ri-building-line"></i>
                     </x-nav-icon>
@@ -38,7 +38,7 @@
                 {{--end  menu management sekolah--}}
 
                 {{--start menu guru--}}
-                <x-nav-item target="menu-pengaturan" title="Pengaturan">
+                <x-nav-item dropdownable="true" target="menu-pengaturan" title="Pengaturan">
                     <x-nav-icon>
                         <i class="ri-settings-5-line"></i>
                     </x-nav-icon>

@@ -9,10 +9,12 @@ class NavItem extends Component
 
     public $target;
     public $title;
-    public function __construct($target, $title)
+    public $dropdownable = false;
+    public function __construct($target, $title, $dropdownable)
     {
         $this->target = $target;
         $this->title = $title;
+        $this->dropdownable = $dropdownable;
     }
 
 

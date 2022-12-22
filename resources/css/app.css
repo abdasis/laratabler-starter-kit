@@ -41,3 +41,11 @@ a.nav-link {
     border-left: var(--tblr-border-width) var(--tblr-border-style) var(--tblr-border-color);
     padding-left: 0px !important;
 }
+
+.simplebar-content {
+    overflow-x: hidden;
+}
+
+.simplebar-track.simplebar-horizontal {
+    display: none;
+}
